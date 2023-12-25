@@ -1,0 +1,186 @@
+
+#ifndef DAWN_HW_SCFG_REGS_H_
+#define DAWN_HW_SCFG_REGS_H_
+
+#include <dawn/hw/iobase.h>
+
+#define REG_SCFG_ROM_ADDR  (IO_SCFG_BASE + 0)
+#define REG_SCFG_ROMWE_ADDR  (IO_SCFG_BASE + 2)
+#define REG_SCFG_CLK_ADDR  (IO_SCFG_BASE + 4)
+#define REG_SCFG_EXT_ADDR  (IO_SCFG_BASE + 8)
+#define REG_SCFG_MC_ADDR   (IO_SCFG_BASE +16)
+
+#define REG_SCFG_ROM  (*(volatile uint16_t*)REG_SCFG_ROM_ADDR)
+#define REG_SCFG_ROMWE  (*(volatile uint16_t*)REG_SCFG_ROMWE_ADDR)
+#define REG_SCFG_CLK  (*(volatile uint16_t*)REG_SCFG_CLK_ADDR)
+#define REG_SCFG_EXT  (*(volatile uint32_t*)REG_SCFG_EXT_ADDR)
+
+#define REG_SCFG_ROM_A9BOOT_Lsb 0
+#define REG_SCFG_ROM_A9NTR_Lsb  1
+#define REG_SCFG_ROM_A7BOOT_Lsb 8
+#define REG_SCFG_ROM_A7NTR_Lsb  9
+#define REG_SCFG_ROM_CONSOLEID_DISABLE_Lsb 10
+
+#define REG_SCFG_MC_1_EMPTY_Lsb 0
+#define REG_SCFG_MC_1_PWR_Lsb   2
+#define REG_SCFG_MC_2_EMPTY_Lsb 4
+#define REG_SCFG_MC_2_PWR_Lsb   6
+#define REG_SCFG_MC_SWAP_Lsb   15
+
+#define REG_SCFG_EXT_DMA_Lsb    0
+#define REG_SCFG_EXT_GCD_Lsb    7
+#define REG_SCFG_EXT_IRQ_Lsb    8
+#define REG_SCFG_EXT_LCD_Lsb   12
+#define REG_SCFG_EXT_VRAM_Lsb  13
+#define REG_SCFG_EXT_FCRAM_Lsb 14
+#define REG_SCFG_EXT_NDMA_Lsb  16
+#define REG_SCFG_EXT_GCD2_Lsb  24
+#define REG_SCFG_EXT_NWRAM_Lsb 25
+#define REG_SCFG_EXT_SCFG_Lsb  31
+
+#define REG_SCFG_ROM_A9BOOT_Msk (1<<REG_SCFG_ROM_A9BOOT_Lsb)
+#define REG_SCFG_ROM_A9NTR_Msk (1<<REG_SCFG_ROM_A9NTR_Lsb)
+#define REG_SCFG_ROM_A7BOOT_Msk (1<<REG_SCFG_ROM_A7BOOT_Lsb)
+#define REG_SCFG_ROM_A7NTR_Msk (1<<REG_SCFG_ROM_A7NTR_Lsb)
+#define REG_SCFG_ROM_CONSOLEID_DISABLE_Msk (1<<REG_SCFG_ROM_CONSOLEID_Lsb)
+
+#define REG_SCFG_MC_1_EMPTY_Msk (1<<REG_SCFG_MC_1_EMPTY_Lsb)
+#define REG_SCFG_MC_1_PWR_Msk (3<<REG_SCFG_MC_1_PWR_Lsb)
+#define REG_SCFG_MC_2_EMPTY_Msk (1<<REG_SCFG_MC_2_EMPTY_Lsb)
+#define REG_SCFG_MC_2_PWR_Msk (3<<REG_SCFG_MC_2_PWR_Lsb)
+#define REG_SCFG_MC_SWAP_Msk (1<<REG_SCFG_MC_SWAP_Lsb)
+
+#define REG_SCFG_EXT_DMA_Msk (1<<REG_SCFG_EXT_DMA_Lsb)
+#define REG_SCFG_EXT_GCD_Msk (1<<REG_SCFG_EXT_GCD_Lsb)
+#define REG_SCFG_EXT_IRQ_Msk (1<<REG_SCFG_EXT_IRQ_Lsb)
+#define REG_SCFG_EXT_LCD_Msk (1<<REG_SCFG_EXT_LCD_Lsb)
+#define REG_SCFG_EXT_VRAM_Msk (1<<REG_SCFG_EXT_VRAM_Lsb)
+#define REG_SCFG_EXT_FCRAM_Msk (3<<REG_SCFG_EXT_FCRAM_Lsb)
+#define REG_SCFG_EXT_NDMA_Msk (1<<REG_SCFG_EXT_NDMA_Lsb)
+#define REG_SCFG_EXT_GCD2_Msk (1<<REG_SCFG_EXT_GCD2_Lsb)
+#define REG_SCFG_EXT_NWRAM_Msk (1<<REG_SCFG_EXT_NWRAM_Lsb)
+#define REG_SCFG_EXT_SCFG_Msk (1<<REG_SCFG_EXT_SCFG_Lsb)
+
+#define REG_SCFG_MC_PWR_OFF    0
+#define REG_SCFG_MC_PWR_ONRST  1
+#define REG_SCFG_MC_PWR_ON     2
+#define REG_SCFG_MC_PWR_PWROFF 2
+
+#if ARM7
+#define REG_SCFG_JTAG_ADDR (IO_SCFG_BASE + 6)
+#define REG_SCFG_WL_ADDR   (IO_SCFG_BASE +32)
+#define REG_SCFG_OP_ADDR   (IO_SCFG_BASE +36)
+#define REG_SCFG_CARD_INSERT_DELAY_ADDR   (IO_SCFG_BASE +18)
+#define REG_SCFG_CARD_PWROFF_DELAY_ADDR   (IO_SCFG_BASE +20)
+
+#define REG_SCFG_JTAG (*(volatile uint16_t*)REG_SCFG_JTAG_ADDR)
+#define REG_SCFG_MC   (*(volatile uint16_t*)REG_SCFG_MC_ADDR)
+#define REG_SCFG_WL   (*(volatile uint16_t*)REG_SCFG_WL_ADDR)
+#define REG_SCFG_OP   (*(const volatile uint16_t*)REG_SCFG_OP_ADDR)
+#define REG_SCFG_CARD_INSERT_DELAY (*(volatile uint16_t*)REG_SCFG_CARD_INSERT_DELAY_ADDR)
+#define REG_SCFG_CARD_PWROFF_DELAY (*(volatile uint16_t*)REG_SCFG_CARD_PWROFF_DELAY_ADDR)
+
+#define REG_SCFG_CLK_SDMC_Lsb  0
+#define REG_SCFG_CLK_SD2_Lsb   1
+#define REG_SCFG_CLK_AES_Lsb   2
+#define REG_SCFG_CLK_NWRAM_Lsb 7
+#define REG_SCFG_CLK_TSC_Lsb   8
+
+#define REG_SCFG_JTAG_ARM7SEL_Lsb 0
+#define REG_SCFG_JTAG_CPUEN_Lsb   1
+#define REG_SCFG_JTAG_DSPEN_Lsb   8
+
+#define REG_SCFG_EXT_SDMA_Lsb   1
+#define REG_SCFG_EXT_SND_Lsb    2
+#define REG_SCFG_EXT_SPI_Lsb    9
+#define REG_SCFG_EXT_SDMAEXT_Lsb 10
+#define REG_SCFG_EXT_SIO_Lsb   11
+#define REG_SCFG_EXT_AES_Lsb   17
+#define REG_SCFG_EXT_SDMC_Lsb  18
+#define REG_SCFG_EXT_SDIO_Lsb  19
+#define REG_SCFG_EXT_MIC_Lsb   20
+#define REG_SCFG_EXT_I2S_Lsb   21
+#define REG_SCFG_EXT_I2C_Lsb   22
+#define REG_SCFG_EXT_GPIO_Lsb  23
+#define REG_SCFG_EXT_SD20_Lsb  28
+
+#define REG_SCFG_WL_OFFB_Lsb 0
+
+#define REG_SCFG_OP_TYP_Lsb 0
+#define REG_SCFG_OP_UNK_Lsb 4
+
+#define REG_SCFG_CLK_SDMC_Msk (1<<REG_SCFG_CLK_SDMC_Lsb)
+#define REG_SCFG_CLK_SD2_Msk (1<<REG_SCFG_CLK_SD2_Lsb)
+#define REG_SCFG_CLK_AES_Msk (1<<REG_SCFG_CLK_AES_Lsb)
+#define REG_SCFG_CLK_NWRAM_Msk (1<<REG_SCFG_CLK_NWRAM_Lsb)
+#define REG_SCFG_CLK_TSC_Msk (1<<REG_SCFG_CLK_TSC_Lsb)
+
+#define REG_SCFG_JTAG_ARM7SEL_Msk (1<<REG_SCFG_JTAG_ARM7SEL_Lsb)
+#define REG_SCFG_JTAG_CPUEN_Msk (1<<REG_SCFG_JTAG_CPUEN_Lsb)
+#define REG_SCFG_JTAG_DSPEN_Msk (1<<REG_SCFG_JTAG_DSPEN_Lsb)
+
+#define REG_SCFG_EXT_SDMA_Msk (1<<REG_SCFG_EXT_SDMA_Lsb)
+#define REG_SCFG_EXT_SND_Msk (1<<REG_SCFG_EXT_SND_Lsb)
+#define REG_SCFG_EXT_SPI_Msk (1<<REG_SCFG_EXT_SPI_Lsb)
+#define REG_SCFG_EXT_SDMAEXT_Msk (1<<REG_SCFG_EXT_SDMAEXT_Lsb)
+#define REG_SCFG_EXT_SIO_Msk (1<<REG_SCFG_EXT_SIO_Lsb)
+#define REG_SCFG_EXT_AES_Msk (1<<REG_SCFG_EXT_AES_Lsb)
+#define REG_SCFG_EXT_SDMC_Msk (1<<REG_SCFG_EXT_SDMC_Lsb)
+#define REG_SCFG_EXT_SDIO_Msk (1<<REG_SCFG_EXT_SDIO_Lsb)
+#define REG_SCFG_EXT_MIC_Msk (1<<REG_SCFG_EXT_MIC_Lsb)
+#define REG_SCFG_EXT_I2S_Msk (1<<REG_SCFG_EXT_SNDEX_Lsb)
+#define REG_SCFG_EXT_I2C_Msk (1<<REG_SCFG_EXT_I2C_Lsb)
+#define REG_SCFG_EXT_GPIO_Msk (1<<REG_SCFG_EXT_GPIO_Lsb)
+#define REG_SCFG_EXT_SD20_Msk (1<<REG_SCFG_EXT_SD20_Lsb)
+
+#define REG_SCFG_WL_OFFB_Msk (1<<REG_SCFG_WL_OFFB_Lsb)
+
+#define REG_SCFG_OP_TYP_Msk (3<<REG_SCFG_OP_TYP_Lsb)
+#define REG_SCFG_OP_UNK_Msk (1<<REG_SCFG_OP_UNK_Lsb)
+
+#elif defined(ARM9)
+#define REG_SCFG_RST_ADDR  (IO_SCFG_BASE + 6)
+
+#define REG_SCFG_RST  (*(volatile uint16_t*)REG_SCFG_RST_ADDR)
+#define REG_SCFG_MC   (*(const volatile uint16_t*)REG_SCFG_MC_ADDR)
+
+#define REG_SCFG_CLK_ARM9_Lsb   0
+#define REG_SCFG_CLK_DSP_Lsb    1
+#define REG_SCFG_CLK_CAMCSI_Lsb 2
+#define REG_SCFG_CLK_NWRAM_Lsb  7
+#define REG_SCFG_CLK_CAMCLK_Lsb 8
+
+#define REG_SCFG_EXT_GEOM_Lsb   1
+#define REG_SCFG_EXT_RND_Lsb    2
+#define REG_SCFG_EXT_PPU_Lsb    3
+#define REG_SCFG_EXT_DIV_Lsb    4
+#define REG_SCFG_EXT_CAM_Lsb   17
+#define REG_SCFG_EXT_DSP_Lsb   18
+#define REG_SCFG_EXT_SCFG_Lsb  31
+
+#define REG_SCFG_RST_DSP_Lsb 0
+
+#define REG_SCFG_CLK_ARM9_Msk (1<<REG_SCFG_CLK_ARM9_Lsb)
+#define REG_SCFG_CLK_DSP_Msk (1<<REG_SCFG_CLK_DSP_Lsb)
+#define REG_SCFG_CLK_CAMCSI_Msk (1<<REG_SCFG_CLK_CAMCSI_Lsb)
+#define REG_SCFG_CLK_NWRAM_Msk (1<<REG_SCFG_CLK_NWRAM_Lsb)
+#define REG_SCFG_CLK_CAMCLK_Msk (1<<REG_SCFG_CLK_CAMCLK_Lsb)
+
+#define REG_SCFG_EXT_GEOM_Msk (1<<REG_SCFG_EXT_GEOM_Lsb)
+#define REG_SCFG_EXT_RND_Msk (1<<REG_SCFG_EXT_RND_Lsb)
+#define REG_SCFG_EXT_PPU_Msk (1<<REG_SCFG_EXT_PPU_Lsb)
+#define REG_SCFG_EXT_DIV_Msk (1<<REG_SCFG_EXT_DIV_Lsb)
+#define REG_SCFG_EXT_CAM_Msk (1<<REG_SCFG_EXT_CAM_Lsb)
+#define REG_SCFG_EXT_DSP_Msk (1<<REG_SCFG_EXT_DSP_Lsb)
+
+#define REG_SCFG_RST_DSP_Msk (1<<REG_SCFG_RST_DSP_Lsb)
+
+#define REG_SCFG_EXT_FCRAM_NTR (0<<REG_SCFG_EXT_FCRAM_Lsb)
+#define REG_SCFG_EXT_FCRAM_TWL (2<<REG_SCFG_EXT_FCRAM_Lsb)
+#define REG_SCFG_EXT_FCRAM_TWLDBG (3<<REG_SCFG_EXT_FCRAM_Lsb)
+#else
+#error "Need either ARM7 or ARM9 defined!"
+#endif
+
+#endif
+

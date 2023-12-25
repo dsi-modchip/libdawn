@@ -1,0 +1,20 @@
+/*
+BGxCNT
+BGx[HV]OFS
+BG[23]{X,Y,P[ABCD]}
+WINx[HV]
+WININ
+WINOUT
+MOSAIC
+BLDCNT
+BLDALPHA
+BLDY
+
+bg map format?
+
+OAM_ATTR:
+  A0
+  A1
+  A2
+  P[ABCD]
+*/

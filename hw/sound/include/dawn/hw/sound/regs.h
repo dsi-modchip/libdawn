@@ -1,0 +1,96 @@
+
+#ifndef DAWN_HW_SOUND_REGS_H_
+#define DAWN_HW_SOUND_REGS_H_
+
+#ifndef ARM7
+#error "The sound hardware is exclusive to the ARM7!"
+#endif
+
+
+#include <dawn/hw/iobase.h>
+
+
+#define REG_SOUNDxCNT_ADDR(n) (IO_SOUND_BASE + (n)*0x10 + 0x0)
+#define REG_SOUNDxSAD_ADDR(n) (IO_SOUND_BASE + (n)*0x10 + 0x4)
+#define REG_SOUNDxTMR_ADDR(n) (IO_SOUND_BASE + (n)*0x10 + 0x8)
+#define REG_SOUNDxPNT_ADDR(n) (IO_SOUND_BASE + (n)*0x10 + 0xa)
+#define REG_SOUNDxLEN_ADDR(n) (IO_SOUND_BASE + (n)*0x10 + 0xc)
+
+#define REG_SOUNDxCNT(n) (*(volatile uint32_t*)REG_SOUNDxCNT_ADDR(n))
+#define REG_SOUNDxSAD(n) (*(volatile uint32_t*)REG_SOUNDxSAD_ADDR(n))
+#define REG_SOUNDxTMR(n) (*(volatile uint16_t*)REG_SOUNDxTMR_ADDR(n))
+#define REG_SOUNDxPNT(n) (*(volatile uint16_t*)REG_SOUNDxPNT_ADDR(n))
+#define REG_SOUNDxLEN(n) (*(volatile uint32_t*)REG_SOUNDxLEN_ADDR(n))
+
+
+#define REG_SOUNDxCNT_VOL_Lsb   0
+#define REG_SOUNDxCNT_VDIV_Lsb  8
+#define REG_SOUNDxCNT_HOLD_Lsb 15
+#define REG_SOUNDxCNT_PAN_Lsb  16
+#define REG_SOUNDxCNT_DUTY_Lsb 24
+#define REG_SOUNDxCNT_REP_Lsb  27
+#define REG_SOUNDxCNT_FMT_Lsb  29
+#define REG_SOUNDxCNT_EN_Lsb   31
+
+#define REG_SOUNDxCNT_VOL_Msk  (0x7f<<REG_SOUNDxCNT_VOL_Lsb)
+#define REG_SOUNDxCNT_VDIV_Msk (3<<REG_SOUNDxCNT_VDIV_Lsb)
+#define REG_SOUNDxCNT_HOLD_Msk (1<<REG_SOUNDxCNT_HOLD_Lsb)
+#define REG_SOUNDxCNT_PAN_Msk  (0x7f<<REG_SOUNDxCNT_PAN_Lsb)
+#define REG_SOUNDxCNT_DUTY_Msk (7<<REG_SOUNDxCNT_DUTY_Lsb)
+#define REG_SOUNDxCNT_REP_Msk  (3<<REG_SOUNDxCNT_REP_Lsb)
+#define REG_SOUNDxCNT_FMT_Msk  (3<<REG_SOUNDxCNT_FMT_Lsb)
+#define REG_SOUNDxCNT_EN_Msk   (1<<REG_SOUNDxCNT_EN_Lsb)
+
+
+#define REG_SOUNDCNT_ADDR  (IO_SOUND_BASE + 0x500)
+#define REG_SOUNDBIAS_ADDR (IO_SOUND_BASE + 0x504)
+
+#define REG_SOUNDCNT  (*(volatile uint16_t*)REG_SOUNDCNT_ADDR)
+#define REG_SOUNDBIAS (*(volatile uint16_t*)REG_SOUNDBIAS_ADDR)
+
+
+#define REG_SOUNDCNT_MVOL_Lsb  0
+#define REG_SOUNDCNT_LOUT_Lsb  8
+#define REG_SOUNDCNT_ROUT_Lsb 10
+#define REG_SOUNDCNT_CH1M_Lsb 12
+#define REG_SOUNDCNT_CH3M_Lsb 13
+#define REG_SOUNDCNT_M_EN_Lsb 15
+
+#define REG_SOUNDCNT_MVOL_Msk (0x7f<<REG_SOUNDCNT_MVOL_Lsb)
+#define REG_SOUNDCNT_LOUT_Msk (3<<REG_SOUNDCNT_LOUT_Lsb)
+#define REG_SOUNDCNT_ROUT_Msk (3<<REG_SOUNDCNT_ROUT_Lsb)
+#define REG_SOUNDCNT_CH1M_Msk (1<<REG_SOUNDCNT_CH1M_Lsb)
+#define REG_SOUNDCNT_CH3M_Msk (1<<REG_SOUNDCNT_CH3M_Lsb)
+#define REG_SOUNDCNT_M_EN_Msk (1<<REG_SOUNDCNT_M_EN_Lsb)
+
+
+#define REG_SNDCAP0CNT_ADDR (IO_SOUND_BASE + 0x508)
+#define REG_SNDCAP1CNT_ADDR (IO_SOUND_BASE + 0x509)
+#define REG_SNDCAP0DAD_ADDR (IO_SOUND_BASE + 0x510)
+#define REG_SNDCAP0LEN_ADDR (IO_SOUND_BASE + 0x514)
+#define REG_SNDCAP1DAD_ADDR (IO_SOUND_BASE + 0x518)
+#define REG_SNDCAP1LEN_ADDR (IO_SOUND_BASE + 0x514)
+
+#define REG_SNDCAP0CNT (*(volatile uint8_t*)REG_SNDCAP0CNT_ADDR)
+#define REG_SNDCAP1CNT (*(volatile uint8_t*)REG_SNDCAP1CNT_ADDR)
+#define REG_SNDCAP0DAD (*(volatile uint32_t*)REG_SNDCAP0DAD_ADDR)
+#define REG_SNDCAP0LEN (*(volatile uint16_t*)REG_SNDCAP0LEN_ADDR)
+#define REG_SNDCAP1DAD (*(volatile uint32_t*)REG_SNDCAP1DAD_ADDR)
+#define REG_SNDCAP1LEN (*(volatile uint16_t*)REG_SNDCAP1LEN_ADDR)
+
+
+#define REG_SNDCAPxCNT_ADD_Lsb 0
+#define REG_SNDCAPxCNT_SRC_Lsb 1
+#define REG_SNDCAPxCNT_REP_Lsb 2
+#define REG_SNDCAPxCNT_FMT_Lsb 3
+#define REG_SNDCAPxCNT_EN_Lsb  7
+
+#define REG_SNDCAPxCNT_ADD_Msk (1<<REG_SNDCAPxCNT_ADD_Lsb)
+#define REG_SNDCAPxCNT_SRC_Msk (1<<REG_SNDCAPxCNT_SRC_Lsb)
+#define REG_SNDCAPxCNT_REP_Msk (1<<REG_SNDCAPxCNT_REP_Lsb)
+#define REG_SNDCAPxCNT_FMT_Msk (1<<REG_SNDCAPxCNT_FMT_Lsb)
+#define REG_SNDCAPxCNT_EN_Msk  (1<<REG_SNDCAPxCNT_EN_Lsb)
+
+
+#endif
+

@@ -1,0 +1,32 @@
+
+#ifndef DAWN_OPTIONS_H_
+#define DAWN_OPTIONS_H_
+
+/* NOTE: this file must be includable from assembly! */
+
+
+#ifndef LIBDAWN_DTCM_STACK_SIZE
+/** NOTE: THIS MUST MATCH WITH THE LINKER SCRIPT USED! THINGS WILL BREAK BADLY
+ *        OTHERWISE!! */
+#define LIBDAWN_DTCM_STACK_SIZE 0x2000
+#endif
+
+
+/*#define LIBDAWN_HW_MODEL_DETECT_OVERRIDE (dawn_hw_model_...) */
+/*#define LIBDAWN_HW_MODEL_NO_RAMTEST 1*/
+
+
+#ifndef LIBDAWN_CLEAR_HEAP_MEMORY
+#define LIBDAWN_CLEAR_HEAP_MEMORY 0
+#endif
+#ifndef LIBDAWN_CLEAR_HEAP_MEMORY_VALUE
+#define LIBDAWN_CLEAR_HEAP_MEMORY_VALUE 0xdeda110c
+#endif
+
+/** 1=133 MHz, 0=66 MHz */
+#ifndef LIBDAWN_DEFAULT_TWL_ARM9_CPU_SPEED
+#define LIBDAWN_DEFAULT_TWL_ARM9_CPU_SPEED 1
+#endif
+
+#endif
+

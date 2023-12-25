@@ -1,0 +1,4 @@
+option('use_nano', description: 'Use newlib-nano', type: 'feature', value: 'auto', yield: true)
+option('crt0_lang', description: 'crt0 target language', type: 'combo', choices: ['c', 'rust'], value: 'c', yield: true)
+option('enable_kernel', description: 'Automatically add cooperative task-switching kernel and components to base libtwl', type: 'boolean', value: true)
+option('arm7mem_layout', description: 'Memory layout to use for ARM7 binaries. `psram\' places some code in shared main memory, `wram\' only used the shared and private WRAM banks.', type: 'combo', choices: ['psram', 'wram'], value: 'psram')
